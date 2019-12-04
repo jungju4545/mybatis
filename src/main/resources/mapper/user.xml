@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- namespace규칙이 있다 -->
+<mapper namespace="com.cos.crud.repository.UserRepository">
+
+<!-- Blog 대신에 Person바꾸기, #은 jsp에서 $와 같다, resultType에는 풀 경로를 적는다. -->
+  
+   
+  <insert id = "join">
+INSERT INTO myuser( id, username, password, email, createDate) 
+VALUES( #{id}, #{username}, #{password},#{email}, now())
+  </insert>
+  
+ 
+<update id="update">
+UPDATE post SET title = #{title}, content =#{content} WHERE id = #{id}
+</update>
+  
+  <delete id="delete"> <!-- PostRepository에 있는 delete함수를 탄다. -->
+  DELETE FROM post WHERE id = #{id}
+  </delete>
+  
+ 
+ 
+</mapper>
