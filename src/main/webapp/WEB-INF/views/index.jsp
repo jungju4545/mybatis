@@ -58,10 +58,18 @@
 						<ul class="nav navbar-nav menu_nav">
 							<li class="nav-item active"><a class="nav-link"
 								href="index.html">Home</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="/user/loginForm">login</a></li>
-								<li class="nav-item"><a class="nav-link"
-								href="/user/joinForm">회원가입</a></li>
+								
+								<c:choose>
+								<c:when test="${empty sessionScope.user}">
+									<li class="nav-item"><a class="nav-link" href="/user/loginForm">login</a></li>
+								<li class="nav-item"><a class="nav-link" href="/user/joinForm">회원가입</a></li>
+								</c:when>
+								<c:otherwise>
+									<li class="nav-item"><a class="nav-link" href="/blog/user/update.jsp">Profile</a></li>
+									<li class="nav-item"><a class="nav-link" href="/blog/user?cmd=logout">Logout</a></li>
+								</c:otherwise>
+							</c:choose>
+							
 							<li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
 							<li class="nav-item submenu dropdown"><a href="#"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
